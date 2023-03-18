@@ -14,15 +14,15 @@
     'license': 'LGPL-3',
     'data': [
         'security/groups.xml',
-        'views/assets.xml',
+        #'views/assets.xml',
         'views/account_invoice_view.xml',
         'wizards/attach_xmls_wizard_view.xml',
     ],
     'demo': [
         'demo/ir_attachment.xml',
     ],
-    'qweb': [
-        'static/src/xml/*.xml',
-    ],
+    #'qweb': [
+    #    'static/src/xml/*.xml',
+    #],
     'installable': True,
 }
