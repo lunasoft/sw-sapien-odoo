@@ -21,7 +21,7 @@ odoo/filestore
 # maintenance migration scripts
 odoo/addons/base/maintenance
 
-# generated for windows installer?
+# generated for windows installer??
 install/win32/*.bat
 install/win32/meta.py
 
