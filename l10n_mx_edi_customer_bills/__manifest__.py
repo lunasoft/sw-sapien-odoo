@@ -12,7 +12,7 @@
     'data': [
         'data/account_data.xml',
         'data/partner_tags.xml',
-        'views/assets.xml',
+        #'views/assets.xml',
         'views/account_invoice_view.xml',
         'wizards/attach_xmls_wizard_view.xml',
     ],
