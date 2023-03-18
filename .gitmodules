@@ -1,4 +1,0 @@
-[submodule "vendor-bills"]
-	path = vendor-bills
-	url = git@git.vauxoo.com:Vauxoo/vendor-bills.git
-	branch = 13.0
