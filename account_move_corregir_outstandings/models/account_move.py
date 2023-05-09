@@ -26,9 +26,13 @@ class AccountMoveLine(models.Model):
             i+=1
         _logger.info("Proceso terminó exitosamente")
 
-    def _get_mail_template(self): ##sobreescribe funcion original, no permite cargar predeterminados
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    def _get_mail_template(self):
         """
-        :return: the correct mail template based on the current move type
+        :return: the correct mail template baseda en grupo
         """
         usuario = self.env.user
         if usuario.has_group('account_move_corregir_outstandings.group_usar_plantilla_sw'):
@@ -36,8 +40,4 @@ class AccountMoveLine(models.Model):
             if plantilla_sw:
                 return '__export__.mail_template_77_c2ae9992'
         else:
-            return (
-                'account.email_template_edi_credit_note'
-                if all(move.move_type == 'out_refund' for move in self)
-                else 'account.email_template_edi_invoice'
-            )
+            return super(AccountMove, self)._get_mail_template()
