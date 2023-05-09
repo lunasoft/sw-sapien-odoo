@@ -15,6 +15,7 @@
     ],
     "data": [
         'data/cron_data.xml',
+        'data/res_groups.xml',
     ],
     'installable': True,
     'application': False,
