@@ -13,7 +13,9 @@
     "depends": [
         "account", "l10n_mx_edi",
     ],
-    "data": ['views/res_partner_views.xml'],
+    "data": ['views/res_partner_views.xml',
+             'views/account_move_views.xml',
+             ],
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
