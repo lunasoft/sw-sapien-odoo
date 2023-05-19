@@ -2,7 +2,7 @@
 
 {
     "name": "Uso de cfdi y forma de pago desde cliente",
-    "version": "16.0.1.1",
+    "version": "16.0.1.0",
     'author': "InuX",
     'website': "www.google.com",
     'category': '',
