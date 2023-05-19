@@ -2,7 +2,7 @@
 
 {
     "name": "Uso de cfdi y forma de pago desde cliente",
-    "version": "16.0.1.0",
+    "version": "16.0.1.1",
     'author': "InuX",
     'website': "www.google.com",
     'category': '',
@@ -11,7 +11,7 @@
            La factura será creada con los valores determinados. (Enterprise)
     """,
     "depends": [
-        "account", "l10n_mx_edi",
+        "account", "l10n_mx_edi", "sale"
     ],
     "data": ['views/res_partner_views.xml',
              'views/account_move_views.xml',
