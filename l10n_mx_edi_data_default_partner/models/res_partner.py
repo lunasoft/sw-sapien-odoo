@@ -28,7 +28,7 @@ class ResPartner(models.Model):
             ('D08', 'Gastos de transportación escolar obligatoria'),
             ('D09', 'Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones'),
             ('D10', 'Pagos por servicios educativos (colegiaturas)'),
-            ('S01', "Sin Efectos Fiscales")], default='S01',
+            ('S01', "Sin Efectos Fiscales")], default=False,
         string="Uso CFDI predeterminado")
 
     l10n_mx_edi_payment_method_id = fields.Many2one(
