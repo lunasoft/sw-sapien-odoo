@@ -11,7 +11,7 @@
            La factura será creada con los valores determinados. (Enterprise)
     """,
     "depends": [
-        "account", "l10n_mx_edi", "sale"
+        "account", "l10n_mx_edi", "sale_management"
     ],
     "data": ['views/res_partner_views.xml',
              'views/account_move_views.xml',

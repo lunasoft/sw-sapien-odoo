@@ -6,6 +6,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     l10n_mx_edi_forzar_politica = fields.Selection(string='Forzar política de pago', selection=[('PPD', 'PPD'), ('PUE', 'PUE')])
+    l10n_mx_edi_usage = fields.Selection(selection_add=[], default=lambda self: self.partner_id.l10n_mx_edi_usage)
 
     def _compute_l10n_mx_edi_payment_method_id(self): #metodo de pago
         for move in self:
