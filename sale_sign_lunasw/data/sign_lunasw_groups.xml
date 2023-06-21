@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_lomas_admin" model="res.groups">
+        <field name="name">Gerencia Admin las lomas</field>
+    </record>
+    <record id="group_lomas_ventas" model="res.groups">
+        <field name="name">Asistente de Ventas las lomas</field>
+    </record>
+    <record id="group_lomas_obra" model="res.groups">
+        <field name="name">Obra las lomas</field>
+    </record>
+    <record id="group_lomas_durbano" model="res.groups">
+        <field name="name">Diseño Urbano las lomas</field>
+    </record>
+    <record id="group_lomas_juridico" model="res.groups">
+        <field name="name">Legal las lomas</field>
+    </record>
+    <record id="group_lomas_finanzas" model="res.groups">
+        <field name="name">Finanzas las lomas</field>
+    </record>
+    <record id="group_lomas_contabilidad" model="res.groups">
+        <field name="name">Contabilidad las lomas</field>
+    </record>
+    <record id="group_lomas_marketing" model="res.groups">
+        <field name="name">Marketing las lomas</field>
+    </record>
+    <record id="group_lomas_contratos" model="res.groups">
+        <field name="name">Contratos las lomas</field>
+    </record>
+    <record id="group_lomas_venta_gte" model="res.groups">
+        <field name="name">Gerente de Ventas las lomas</field>
+    </record>
+    <record id="group_lomas_creditos" model="res.groups">
+        <field name="name">Créditos Hipotecarios las lomas</field>
+    </record>
+    <record id="group_lomas_cobranza" model="res.groups">
+        <field name="name">Cobranza las lomas</field>
+    </record>
+    <record id="group_lomas_atencion" model="res.groups">
+        <field name="name">Atención a Clientes las lomas</field>
+    </record>
+    <record id="group_lomas_auditoria" model="res.groups">
+        <field name="name">Auditoria las lomas</field>
+    </record>
+    <record id="group_lomas_sistemas" model="res.groups">
+        <field name="name">Sistemas las lomas</field>
+    </record>
+    <record id="group_lomas_direccion" model="res.groups">
+        <field name="name">Dirección las lomas</field>
+    </record>
+</odoo>
+
