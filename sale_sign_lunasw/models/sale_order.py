@@ -17,7 +17,6 @@ class SaleOrder(models.Model):
     def lanzar_wizard_firma(self): #contrato Luna
         action = self.env['ir.actions.act_window']._for_xml_id('sign.action_sign_send_request')
         plantilla_id = False
-        print('buscando plantilla de: ', self.env.context.get('tipo'))
         contrato_tag_id = self.env['sign.template.tag'].search([('name', '=', self.env.context.get('tipo'))], limit=1).id
         for plantilla in self.env['sign.template'].search([]):
             if contrato_tag_id in plantilla.tag_ids.ids:

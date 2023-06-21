@@ -17,6 +17,7 @@
         "views/sale_order_view.xml",
         "views/res_partner_view.xml",
         "data/sign_item_type.xml",
+        "data/sign_lunasw_groups.xml",
     ],
     'installable': True,
     'application': False,
