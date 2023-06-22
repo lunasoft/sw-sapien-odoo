@@ -5,11 +5,13 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='signed_by']" position="before">
-                <button name="lanzar_wizard_firma" string="Firma Contrato" type="object" class="oe_highlight" context="{'tipo': 'Contrato Luna'}" groups="sale_sign_lunasw.group_botones_luna"/>
-                <button name="lanzar_wizard_firma" string="Firma Carátula" type="object" class="oe_highlight" context="{'tipo': 'Carátula Luna'}" groups="sale_sign_lunasw.group_botones_luna"/>
-                <button name="lanzar_wizard_firma" string="Firma Contrato" type="object" class="oe_highlight" context="{'tipo': 'Contrato SW'}" groups="sale_sign_lunasw.group_botones_sw"/>
-                <button name="lanzar_wizard_firma" string="Firma Carátula" type="object" class="oe_highlight" context="{'tipo': 'Carátula SW'}" groups="sale_sign_lunasw.group_botones_sw"/>
+            <xpath expr="//page[@name='customer_signature']" position="before">
+                <page string="Firma de documentos" name="firma_docs">
+                    <button name="lanzar_wizard_firma" string="Firma Contrato" type="object" class="oe_highlight" context="{'tipo': 'Contrato Luna'}" groups="sale_sign_lunasw.group_botones_luna"/>
+                    <button name="lanzar_wizard_firma" string="Firma Carátula" type="object" class="oe_highlight" context="{'tipo': 'Carátula Luna'}" groups="sale_sign_lunasw.group_botones_luna"/>
+                    <button name="lanzar_wizard_firma" string="Firma Contrato" type="object" class="oe_highlight" context="{'tipo': 'Contrato SW'}" groups="sale_sign_lunasw.group_botones_sw"/>
+                    <button name="lanzar_wizard_firma" string="Firma Carátula" type="object" class="oe_highlight" context="{'tipo': 'Carátula SW'}" groups="sale_sign_lunasw.group_botones_sw"/>
+                </page>
             </xpath>
             <div name="button_box" position="inside">
                 <button class="oe_stat_button"
