@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_botones_luna" model="res.groups">
+        <field name="name">Botones de Firma Luna</field>
+    </record>
+    <record id="group_botones_sw" model="res.groups">
+        <field name="name">Botones de Firma SW</field>
+    </record>
+</odoo>
+

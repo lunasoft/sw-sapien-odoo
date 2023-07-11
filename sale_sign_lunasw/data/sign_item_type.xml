@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sign_item_type_rfc" model="sign.item.type">
+            <field name="name">RFC</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">vat</field>
+            <field name="placeholder">RFC</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_item_type_razon" model="sign.item.type">
+            <field name="name">Razon Social</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">razon_social</field>
+            <field name="placeholder">Razon Social</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_item_type_replegal" model="sign.item.type">
+            <field name="name">Representante Legal</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">rep_legal</field>
+            <field name="placeholder">Representante Legal</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_item_type_ncorto" model="sign.item.type">
+            <field name="name">Nombre Corto</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">ref</field>
+            <field name="placeholder">Nombre Corto</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_item_type_domicilio" model="sign.item.type">
+            <field name="name">Domicilio</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">street</field>
+            <field name="placeholder">Domicilio</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">Calle y Num</field>
+        </record>
+        <record id="sign_item_type_fecha_comp" model="sign.item.type">
+            <field name="name">Fecha Compromiso</field>
+            <field name="item_type">text</field>
+            <field name="placeholder">DD/MM/AAAA</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">DD/MM/AA</field>
+        </record>
+        <record id="sign_item_type_fecha_firma" model="sign.item.type">
+            <field name="name">Fecha Firma</field>
+            <field name="item_type">text</field>
+            <field name="placeholder">DD/MM/AAAA</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">DD/MM/AA</field>
+        </record>
+        <record id="sign_item_type_colonia" model="sign.item.type">
+            <field name="name">Colonia</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">street2</field>
+            <field name="placeholder">Colonia</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_item_type_estado" model="sign.item.type">
+            <field name="name">Estado</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">state_id.name</field>
+            <field name="placeholder">Estado</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_item_type_cp" model="sign.item.type">
+            <field name="name">Código Postal</field>
+            <field name="item_type">text</field>
+            <field name="auto_field">zip</field>
+            <field name="placeholder">Código Postal</field>
+            <field name="default_width">0.150</field>
+            <field name="default_height">0.015</field>
+            <field name="tip">LLenar</field>
+        </record>
+        <record id="sign_template_tag_contrato_luna" model="sign.template.tag">
+            <field name="name">Contrato Luna</field>
+        </record>
+        <record id="sign_template_tag_caratula_luna" model="sign.template.tag">
+            <field name="name">Carátula Luna</field>
+        </record>
+        <record id="sign_template_tag_contrato_sw" model="sign.template.tag">
+            <field name="name">Contrato SW</field>
+        </record>
+        <record id="sign_template_tag_caratula_sw" model="sign.template.tag">
+            <field name="name">Carátula SW</field>
+        </record>
+    </data>
+</odoo>
