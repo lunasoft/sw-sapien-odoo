@@ -15,6 +15,7 @@ class AnalyticDistributionTemplate(models.Model):
     analytic_total = fields.Json('Totales', store=True, copy=False, readonly=False)
     asignado = fields.Float('Asignado', compute='_compute_asignado')
     analytic_dist_model_id = fields.Many2one('account.analytic.distribution.model', 'Modelo de Distribución')
+    company_id = fields.Many2one('res.company', 'Compañía', default=lambda self: self.env.user.company_id)
 
     @api.depends('analytic_total')
     def _compute_asignado(self):

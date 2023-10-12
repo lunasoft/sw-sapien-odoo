@@ -15,6 +15,7 @@
     ],
     "data": [
         'security/ir.model.access.csv',
+        'security/ir_rule_data.xml',
         "views/account_analityc_distribution_template.xml",
     ],
     'installable': True,
