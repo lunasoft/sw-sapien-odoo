@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_analytic_distribution_template_tree" model="ir.ui.view">
+        <field name="name">account.analytic.distribution.template.tree</field>
+        <field name="model">account.analytic.distribution.template</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Plantillas de Distribución Analíticas">
+                <field name="name"/>
+                <field name="analytic_total" widget="analytic_distribution"/>
+            </tree>
+        </field>
+    </record>
+    <record id="account_analytic_distribution_template_form" model="ir.ui.view">
+        <field name="name">account.analytic.distribution.template.form</field>
+        <field name="model">account.analytic.distribution.template</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Plantillas de Distribución Analíticas">
+                <group >
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" required="1"/>
+                        <separator string="Distribución de los porcentajes"/>
+                        <field name="analytic_distribution" widget="analytic_distribution"/>
+                        <field name="analytic_dist_plan_ids" nolabel="1" colspan="2">
+                            <tree editable="top">
+                                <field name="name"/>
+                                <field name="porcentaje" widget="percentage"/>
+                                <field name="template_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="analytic_total" widget="analytic_distribution"/>
+                        <button colspan="2" name="calc_distribucion_analitica" string="Calcular Distribución" type="object" class="oe_highlight"/>
+                        <field name="asignado" widget="percentage"/>
+                        <div class="o_row" colspan="2">
+                            <button colspan="1" name="aplicar_distribucion_analitica" string="Aplicar al Modelo:" type="object" class="btn-info"/>
+                            <field name="analytic_dist_model_id"/>
+                        </div>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="action_analytic_distribution_template_tree" model="ir.actions.act_window">
+        <field name="name">Plantilla de distribución analítica</field>
+        <field name="res_model">account.analytic.distribution.template</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="account_analytic_distribution_template_tree"/>
+    </record>
+
+    <menuitem action="action_analytic_distribution_template_tree"
+              id="menu_analytic_distribution_template" sequence="5"
+              parent="account.menu_analytic_accounting"
+    />
+
+    <record id="account_analytic_dist_templ_model_tree_inherti_view" model="ir.ui.view">
+        <field name="name">account.analytic.dist.templ.model.tree.inherit.view</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field name="inherit_id" ref="analytic.account_analytic_distribution_model_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="create_date" optional="show" string="Nombre (auto)"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
