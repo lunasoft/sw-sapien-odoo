@@ -100,3 +100,18 @@ class AccountMoveLine(models.Model):
                 continue
         vals = super(AccountMoveLine, self).write(vals)
         return vals
+
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    def create(self, vals_list):
+        journal_cash_id = self.env.company.tax_cash_basis_journal_id.id
+        for move in vals_list:
+            if move.get('journal_id') == journal_cash_id:
+                try:
+                    for tupla in move.get('line_ids'):
+                        tupla[2].update({'analytic_distribution': False})
+                except:
+                    pass
+        return super(AccountMove, self).create(vals_list)
