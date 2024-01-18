@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_subscription_next_update_form_inherti_view" model="ir.ui.view">
+        <field name="name">sale.subscription.next.update.form.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_order_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='prepare_renewal_order']" position="after">
+                <button name="avanzar_fecha_siguiente_factura" string="Extender Fecha" type="object" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
