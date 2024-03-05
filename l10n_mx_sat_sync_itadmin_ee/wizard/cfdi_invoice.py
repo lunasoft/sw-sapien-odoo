@@ -890,20 +890,14 @@ class CfdiInvoiceAttachment(models.TransientModel):
         #    product_exist = product_obj.search([('clave_producto', '=', clave_producto)], limit=1)
         if not product_exist and self.si_producto_no_tiene_codigo == 'Buscar manual':
             product_exist = self.product_id
-        sat_code = self.env['product.unspsc.code'].search([('code', '=', clave_producto)], limit=1)
-        if not product_exist: #se agrega buscar por codigo
-            if not sat_code:
-                raise UserError("No tiene configurada la clave del SAT %s. Por favor configure la clave primero"%(clave_producto))
-            product_exist = product_obj.search([('unspsc_code_id', '=', sat_code.id)], limit=1)
         if not product_exist:
             um_descripcion = self.env['uom.uom'].search([('unspsc_code_id.code','=',clave_unidad)], limit=1)
-            #sat_code = self.env['product.unspsc.code'].search([('code','=',clave_producto)], limit=1) se mueve arriba junto con raise
+            sat_code = self.env['product.unspsc.code'].search([('code','=',clave_producto)], limit=1)
             if not um_descripcion:
                 raise UserError("No tiene configurada la unidad de medida %s. Por favor configure la unidad de medida primero"%(clave_unidad))
-            #product_vals = {'default_code':default_code, 'name':product_name, 'standard_price' : unit_price, 'uom_id' : um_descripcion.id, 'unspsc_code_id' : sat_code.id, 'uom_po_id' : um_descripcion.id}
-            product_vals = {'default_code': default_code, 'name': sat_code.name, 'standard_price': unit_price,
-                            'uom_id': um_descripcion.id, 'unspsc_code_id': sat_code.id, 'uom_po_id': um_descripcion.id,
-                            'description': 'Nombre asignado por el proveedor: '+ str(product_name)}
+            if not sat_code:
+                raise UserError("No tiene configurada la clave del SAT %s. Por favor configure la clave primero"%(clave_producto))
+            product_vals = {'default_code':default_code, 'name':product_name, 'standard_price' : unit_price, 'uom_id' : um_descripcion.id, 'unspsc_code_id' : sat_code.id, 'uom_po_id' : um_descripcion.id}
             if product_type_default:
                 product_vals.update({'type': product_type_default})
             elif 'product' in product_types:
