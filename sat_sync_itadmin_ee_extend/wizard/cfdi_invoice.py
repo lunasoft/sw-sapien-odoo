@@ -5,7 +5,7 @@ from odoo.exceptions import UserError
 
 
 class CfdiInvoiceAttachment(models.TransientModel):
-    inherit = 'cfdi.invoice.attachment'
+    _inherit = 'cfdi.invoice.attachment'
 
 
     @api.model
