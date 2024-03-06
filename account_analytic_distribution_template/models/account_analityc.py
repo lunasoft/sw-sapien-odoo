@@ -40,7 +40,6 @@ class AnalyticDistributionTemplate(models.Model):
 
     @api.onchange('analytic_distribution')
     def onchange_analytic_distribution(self):
-        #import pdb;pdb.set_trace()
         if self.analytic_distribution:
             for analitica in self.analytic_distribution.keys():
                 cuenta = self.env['account.analytic.account'].browse(int(analitica))
@@ -101,6 +100,17 @@ class AccountMoveLine(models.Model):
         vals = super(AccountMoveLine, self).write(vals)
         return vals
 
+    @api.depends('account_id', 'partner_id', 'product_id')
+    def _compute_analytic_distribution(self):
+        for line in self:
+            if line.display_type == 'product' or not line.move_id.is_invoice(include_receipts=True):
+                if line.journal_id.no_analiticas:
+                    line.analytic_distribution = {}
+                else:
+                    super(AccountMoveLine, line)._compute_analytic_distribution()
+            else:
+                super(AccountMoveLine, line)._compute_analytic_distribution()
+
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
@@ -115,3 +125,9 @@ class AccountMove(models.Model):
                 except:
                     pass
         return super(AccountMove, self).create(vals_list)
+
+
+class AccountJournal(models.Model):
+    _inherit = 'account.journal'
+
+    no_analiticas = fields.Boolean('No Usa Analíticas', default=False)
