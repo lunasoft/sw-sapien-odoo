@@ -34,7 +34,7 @@ class CfdiInvoiceAttachment(models.TransientModel):
             um_descripcion = self.env['uom.uom'].search([('unspsc_code_id.code','=',clave_unidad)], limit=1)
             if not um_descripcion:
                 raise UserError("No tiene configurada la unidad de medida %s. Por favor configure la unidad de medida primero"%(clave_unidad))
-            product_vals = {'default_code': default_code, 'name': sat_code.name, 'standard_price': unit_price,
+            product_vals = {'default_code': sat_code.code, 'name': sat_code.name, 'standard_price': unit_price,
                             'uom_id': um_descripcion.id, 'unspsc_code_id': sat_code.id, 'uom_po_id': um_descripcion.id,
                             'description': 'Nombre asignado por el proveedor: ' + str(product_name), 'sale_ok': sale_ok, 'purchase_ok': purchase_ok}
             if product_type_default:
@@ -44,3 +44,40 @@ class CfdiInvoiceAttachment(models.TransientModel):
             product_exist = product_obj.create(product_vals)
 
         return product_exist
+
+    @api.model
+    def get_tax_from_codes(self, taxes, tax_type, no_imp_tras):
+        tax_codes = {'001': 'ISR', '002': 'IVA', '003': 'IEPS'}
+        tax_obj = self.env['account.tax']
+        tax_ids = []
+        if taxes:
+            k = 0
+            for tax in taxes:
+                if tax.get('@TasaOCuota'):
+                    if k < no_imp_tras:
+                        amount_tasa = float(tax.get('@TasaOCuota')) * 100
+                    else:
+                        amount_tasa = float(tax.get('@TasaOCuota')) * -100
+                    tasa = str(amount_tasa)
+                else:
+                    tasa = str(0)
+
+                tax_exist = tax_obj.search(
+                    [('type_tax_use', '=', tax_type), ('l10n_mx_tax_type', '=', tax.get('@TipoFactor')),
+                     ('amount', '=', tasa), ('company_id', '=', self.env.company.id)], limit=1)
+                if not tax_exist:
+                    lim_menor = str(float(tasa)-0.1)
+                    lim_mayor = str(float(tasa)+0.1)
+                    tax_exist = tax_obj.search( #para numeros positivos
+                        [('type_tax_use', '=', tax_type), ('l10n_mx_tax_type', '=', tax.get('@TipoFactor')),
+                         ('amount', '>', lim_menor), ('amount', '<', lim_mayor), ('company_id', '=', self.env.company.id)], limit=1)
+                    if not tax_exist:
+                        tax_exist = tax_obj.search(  # para numeros negativos
+                            [('type_tax_use', '=', tax_type), ('l10n_mx_tax_type', '=', tax.get('@TipoFactor')),
+                             ('amount', '>', lim_mayor), ('amount', '<', lim_menor),
+                             ('company_id', '=', self.env.company.id)], limit=1)
+                tax_ids.append(tax_exist.id)
+                k = k + 1
+        if not tax_exist:
+            tax_ids = super(CfdiInvoiceAttachment, self).get_tax_from_codes(taxes, tax_type, no_imp_tras)
+        return tax_ids
